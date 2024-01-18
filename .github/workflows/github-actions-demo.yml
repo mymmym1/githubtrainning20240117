@@ -41,7 +41,7 @@ jobs:
   Load-Test:
     runs-on: unbuntu-latest
     if: github.event_name == 'workflow_dispatch'
-    needs: Build
+    needs: Test
     environment: Load-Test
     steps:
       - run: |
