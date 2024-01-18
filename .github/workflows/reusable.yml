@@ -27,4 +27,15 @@ jobs:
         id: time
         run: echo "time=$(date)" >> $GITHUB_OUTPUT
 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Pull PowerShell Docker image
+        run: docker pull mcr.microsoft.com/powershell:latest
+
+      - name: Run PowerShell Script
+        run: |
+          docker run -v "$(pwd):/workspace" mcr.microsoft.com/powershell:latest pwsh -c "ls /workspace"
+          docker run -v "$(pwd):/workspace" mcr.microsoft.com/powershell:latest pwsh -File /workspace/my-powershell-action/echo-message.ps1 -message 'Hello, GitHub Actions!'
+
    
