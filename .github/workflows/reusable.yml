@@ -29,19 +29,20 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          repository: mymmym1/githubtrainning20240117
-          ref: main
+      #   with:
+      #     repository: mymmym1/githubtrainning20240117
+      #     ref: main
           
-      - name: Copy folder to current workspace
-        run: |
-          cp -r my-powershell-action $GITHUB_WORKSPACE
+      # - name: Copy folder to current workspace
+      #   run: |
+      #     cp -r my-powershell-action $GITHUB_WORKSPACE
 
       - name: Pull PowerShell Docker image
         run: docker pull mcr.microsoft.com/powershell:latest
 
       - name: Run PowerShell Script
         run: |
+          ls
           docker run -v "$(pwd):/workspace" mcr.microsoft.com/powershell:latest pwsh -c "ls /workspace"
           docker run -v "$(pwd):/workspace" mcr.microsoft.com/powershell:latest pwsh -File /workspace/my-powershell-action/echo-message.ps1 -message 'Hello, GitHub Actions!'
 
