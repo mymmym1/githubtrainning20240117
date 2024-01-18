@@ -33,9 +33,6 @@ jobs:
           repository: mymmym1/githubtrainning20240117
           ref: main
           
-      # - name: Copy folder to current workspace
-      #   run: |
-      #     cp -r my-powershell-action $GITHUB_WORKSPACE
       - name: Check current workspace
         run: ls
 
